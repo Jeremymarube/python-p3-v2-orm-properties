@@ -14,6 +14,36 @@ class Department:
 
     def __repr__(self):
         return f"<Department {self.id}: {self.name}, {self.location}>"
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError("Name must be a non-empty string")
+        self._name = value
+    @property
+    def location(self):
+        return self._location    
+    @location.setter
+    def location(self, value):
+       if not isinstance(value, str):
+        raise ValueError("Location must be a string.")
+       if len(value.strip()) == 0:
+        raise ValueError("Location cannot be empty.")
+       self._location = value 
+    @property
+    def job_title(self):
+        return self._job_title
+
+    @job_title.setter
+    def job_title(self, value):
+        if not isinstance(value, str):
+            raise ValueError("Job title must be a string.")
+        if not value.strip():
+            raise ValueError("Job title cannot be empty.")
+        self._job_title = value      
 
     @classmethod
     def create_table(cls):
